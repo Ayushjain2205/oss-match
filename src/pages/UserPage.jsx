@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Languages from "../components/Languages";
 
 const UserPage = ({ userDetails }) => {
   const [userData, setUserData] = useState({});
@@ -105,6 +106,7 @@ const UserPage = ({ userDetails }) => {
             </div>
           )}
         </div>
+        <Languages username={username} />
       </div>
     </div>
   );
