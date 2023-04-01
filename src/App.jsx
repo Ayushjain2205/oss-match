@@ -1,12 +1,15 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { supabase } from "./utils/client";
+
+import Landing from "./pages/Landing";
+import UserPage from "./pages/UserPage";
 
 function App() {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    console.log(supabase);
     /* when the app loads, check to see if the user is signed in */
     checkUser();
     /* check user on OAuth redirect */
@@ -34,26 +37,18 @@ function App() {
     const userDetails = user.data.user;
     console.log(userDetails);
     return (
-      <div className="App">
+      <div className="App bg-[#272A36]">
         <Navbar
           signout={signOut}
           userName={userDetails.user_metadata.preferred_username}
         />
-        <div className="hero min-h-screen">
-          <div className="hero-content -mt-72 flex-col lg:flex-row">
-            <img
-              className="mask mask-hexagon"
-              src={userDetails.user_metadata.avatar_url}
-            />
-            <div>
-              <h1 className="text-5xl font-bold">
-                Hola! {userDetails.user_metadata.full_name}
-              </h1>
-
-              <button onClick={signOut}>Sign out</button>
-            </div>
-          </div>
-        </div>
+        <Routes>
+          <Route path="/" element={<Landing userDetails={userDetails} />} />
+          <Route
+            path="/user"
+            element={<UserPage userDetails={userDetails} />}
+          />
+        </Routes>
       </div>
     );
   }
