@@ -6,6 +6,7 @@ import { supabase } from "./utils/client";
 
 import Landing from "./pages/Landing";
 import UserPage from "./pages/UserPage";
+import Matches from "./pages/Matches";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -48,6 +49,7 @@ function App() {
             path="/user"
             element={<UserPage userDetails={userDetails} />}
           />
+          <Route path="/matches" element={<Matches />} />
         </Routes>
       </div>
     );

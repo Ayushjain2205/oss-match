@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Languages from "../components/Languages";
 
 const UserPage = ({ userDetails }) => {
@@ -117,6 +118,11 @@ const UserPage = ({ userDetails }) => {
             <Languages username={username} />
           </div>
         </div>
+        <Link className="self-center" to="/matches">
+          <button className="btn btn-wide btn-accent self-center">
+            Lets Match!
+          </button>
+        </Link>
       </div>
     </div>
   );
