@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Treemap } from "@ant-design/plots";
 
 const Languages = ({ username }) => {
   const [languages, setLanguages] = useState([]);
@@ -50,16 +51,27 @@ const Languages = ({ username }) => {
     return <p>Loading...</p>;
   }
 
+  const children = [];
+
+  languages
+    .slice(0, 10)
+    .map((language) =>
+      children.push({ name: language.name, value: language.count })
+    );
+
+  console.log(children);
+
+  const data = {
+    name: "root",
+    children: children,
+  };
+  const config = {
+    data,
+    colorField: "name",
+  };
   return (
     <div>
-      <p>Most used languages:</p>
-      <ul>
-        {languages.slice(0, 10).map((language) => (
-          <li key={language.name}>
-            {language.name} ({language.count})
-          </li>
-        ))}
-      </ul>
+      <Treemap {...config} />
     </div>
   );
 };

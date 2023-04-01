@@ -47,7 +47,7 @@ const UserPage = ({ userDetails }) => {
     <div className="flex justify-center min-h-screen">
       <div className="flex flex-col gap-5 mt-12 w-9/12">
         <div className="flex justify-around w-full h-[100px] rounded-lg bg-neutral align-center">
-          <div className="flex items-center gap-10">
+          <div className="flex items-center">
             <img
               className="mask mask-hexagon h-[75px]"
               src={userDetails.user_metadata.avatar_url}
@@ -69,44 +69,54 @@ const UserPage = ({ userDetails }) => {
             </p>
           </div>
         </div>
-        <div className=" w-3/5 h-[400px] rounded-lg bg-neutral align-center">
-          {events && (
-            <div className="flex flex-col justify-between ">
-              <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
-                Total Events: {events.length}
-              </p>
-              <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
-                Pull Requests:{" "}
-                {
-                  events.filter((event) => event.type === "PullRequestEvent")
-                    .length
-                }
-              </p>
-              <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
-                Forks:{" "}
-                {events.filter((event) => event.type === "ForkEvent").length}
-              </p>
-              <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
-                Open Issues:{" "}
-                {events.filter((event) => event.type === "IssuesEvent").length}
-              </p>
-              <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
-                Reviews:{" "}
-                {
-                  events.filter(
-                    (event) => event.type === "PullRequestReviewEvent"
-                  ).length
-                }
-              </p>
-              <img
-                src={`https://ghchart.rshah.org/${username}`}
-                alt="Name Your Github chart"
-                className="mt-6 w-4/5 self-center"
-              ></img>
-            </div>
-          )}
+        <div className="flex gap-10">
+          <div className=" w-3/5 h-[450px] rounded-lg bg-neutral align-center">
+            {events && (
+              <div className="flex flex-col justify-between  mt-3 ">
+                <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
+                  Total Events: {events.length}
+                </p>
+                <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
+                  Pull Requests:{" "}
+                  {
+                    events.filter((event) => event.type === "PullRequestEvent")
+                      .length
+                  }
+                </p>
+                <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
+                  Forks:{" "}
+                  {events.filter((event) => event.type === "ForkEvent").length}
+                </p>
+                <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
+                  Open Issues:{" "}
+                  {
+                    events.filter((event) => event.type === "IssuesEvent")
+                      .length
+                  }
+                </p>
+                <p className="mx-12 my-2 font-semibold text-xl text-secondary ">
+                  Reviews:{" "}
+                  {
+                    events.filter(
+                      (event) => event.type === "PullRequestReviewEvent"
+                    ).length
+                  }
+                </p>
+                <img
+                  src={`https://ghchart.rshah.org/${username}`}
+                  alt="Name Your Github chart"
+                  className="mt-6 w-4/5 self-center"
+                ></img>
+              </div>
+            )}
+          </div>
+          <div className=" w-2/5 h-[450px] rounded-lg bg-neutral align-center">
+            <p className="mx-12 my-2 font-semibold text-xl text-secondary">
+              Top Languages
+            </p>
+            <Languages username={username} />
+          </div>
         </div>
-        <Languages username={username} />
       </div>
     </div>
   );
