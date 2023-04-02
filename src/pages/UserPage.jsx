@@ -58,13 +58,19 @@ const UserPage = ({ userDetails }) => {
             </p>
           </div>
           <div className="flex items-center">
-            <p className="font-semibold text-xl text-secondary">
+            <p
+              className="font-semibold text-xl text-secondary tooltip"
+              data-tip="repositories"
+            >
               <i class="fa-regular fa-file-code"></i>&nbsp;
               {userData && userData.public_repos}
             </p>
           </div>
           <div className="flex items-center gap-10">
-            <p className="font-semibold text-xl text-secondary">
+            <p
+              className="font-semibold text-xl text-secondary tooltip"
+              data-tip="followers"
+            >
               <i class="fa-solid fa-users"></i>&nbsp;
               {userData && userData.followers}
             </p>

@@ -29,19 +29,28 @@ const Repo = () => {
             </span>
           </div>
           <div className="flex items-center">
-            <p className="font-semibold text-xl text-secondary">
+            <p
+              className="font-semibold text-xl text-secondary tooltip"
+              data-tip="issues"
+            >
               <i class="fa-solid fa-circle-exclamation"></i>&nbsp;
               {repoDetails.open_issues}
             </p>
           </div>
           <div className="flex items-center">
-            <p className="font-semibold text-xl text-secondary">
+            <p
+              className="font-semibold text-xl text-secondary tooltip"
+              data-tip="watchers"
+            >
               <i class="fa-solid fa-eye"></i>&nbsp;
               {repoDetails.watchers_count}
             </p>
           </div>
           <div className="flex items-center">
-            <p className="font-semibold text-xl text-secondary">
+            <p
+              className="font-semibold text-xl text-secondary tooltip"
+              data-tip="forks"
+            >
               <i class="fa-solid fa-code-fork"></i>&nbsp;
               {repoDetails.forks}
             </p>

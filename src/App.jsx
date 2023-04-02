@@ -8,6 +8,7 @@ import Landing from "./pages/Landing";
 import UserPage from "./pages/UserPage";
 import Matches from "./pages/Matches";
 import Repo from "./pages/Repo";
+import Home from "./pages/Home";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -52,14 +53,17 @@ function App() {
           />
           <Route path="/matches" element={<Matches />} />
           <Route path="/repo" element={<Repo />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
+        {/* <button onClick={signOut}>Sign Out</button> */}
       </div>
     );
   }
   return (
     <div className="App">
-      <h1>Hello, please sign in!</h1>
-      <button onClick={signInWithGithub}>Sign In</button>
+      <button className="btn btn-accent" onClick={signInWithGithub}>
+        Sign In with Github
+      </button>
     </div>
   );
 }
