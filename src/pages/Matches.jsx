@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Matches = () => {
-  const [languages, setLanguages] = useState([
-    "python",
-    "javascript",
-    "java",
-    "html",
-  ]);
+  const [languages, setLanguages] = useState(["python", "javascript"]);
   const [repos, setRepos] = useState([]);
   useEffect(() => {
     const handleSearch = async () => {
@@ -62,9 +58,11 @@ const Matches = () => {
                       </div>
                     </th>
                     <td>
-                      {repo.full_name.length > 30
-                        ? repo.full_name.slice(0, 30) + "..."
-                        : repo.full_name}{" "}
+                      <Link to="/repo" state={{ details: repo }}>
+                        {repo.full_name.length > 30
+                          ? repo.full_name.slice(0, 30) + "..."
+                          : repo.full_name}{" "}
+                      </Link>
                       &nbsp;
                       <a href={repo.html_url} target="_blank">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>

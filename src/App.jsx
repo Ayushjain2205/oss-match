@@ -7,6 +7,7 @@ import { supabase } from "./utils/client";
 import Landing from "./pages/Landing";
 import UserPage from "./pages/UserPage";
 import Matches from "./pages/Matches";
+import Repo from "./pages/Repo";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -50,6 +51,7 @@ function App() {
             element={<UserPage userDetails={userDetails} />}
           />
           <Route path="/matches" element={<Matches />} />
+          <Route path="/repo" element={<Repo />} />
         </Routes>
       </div>
     );
